@@ -11,3 +11,5 @@
 <span>Using countries API to get country details: </span>
 <a href="https://restcountries.com/">REST Countries</a>
 <p>Apply Skeleton Loading.</p>
+Add Validation for searching a country.
+Apply Some Tailwind CSS styles.
