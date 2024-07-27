@@ -8,8 +8,8 @@
 
 ---
 <h3>Features / Updates</h3>
-<span>Using countries API to get country details: </span>
-<a href="https://restcountries.com/">REST Countries</a>
-<p>Apply Skeleton Loading.</p>
-Add Validation for searching a country.
-Apply Some Tailwind CSS styles.
+
+- <span>Using countries API to get country details: </span> <a href="https://restcountries.com/">REST Countries</a>
+- Apply Skeleton Loading.
+- Add Validation for searching a country.
+- Apply Some Tailwind CSS styles.
