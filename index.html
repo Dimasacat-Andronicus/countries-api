@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Countries of the World</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="./assets/coutries_logo.png" type="image/x-icon">
+    </head>
+    <body>
+        <div class="head-container">
+            <h1>Countries of the World</h1>
+            <p>Search a Country and this page 
+                will display the details of it.</p>
+        </div>
+        <div class="search-container"> 
+            <input
+               type="text" id="input_search"
+               placeholder="Enter a Country..."/> 
+            <button onclick="searchTheCountry()"
+               id="button_search">Search</button> 
+         </div>
+         <div class="display-container">
+            <div class="country-container">
+                This is where the details of the Country will Display.
+            </div>
+            <div class="region-main-container">
+                <div class="region-title"></div>
+                <div class="countries-region-container"></div>
+            </div>
+         </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
