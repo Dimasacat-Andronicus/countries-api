@@ -4,31 +4,39 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Countries of the World</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" href="./assets/coutries_logo.png" type="image/x-icon">
     </head>
-    <body>
-        <div class="head-container">
-            <h1>Countries of the World</h1>
-            <p>Search a Country and this page 
-                will display the details of it.</p>
+    <body class="bg-gray-900 text-white">
+        <div class="container mx-auto p-4">
+            <div class="head-container text-center mt-20 mb-8">
+                <h1 class="text-4xl font-bold">Countries of the World</h1>
+                <p class="text-gray-400 mt-2">
+                    Search a Country and this page will 
+                    display the details of it.
+                </p>
+            </div>
+            <div class="search-container flex justify-center mb-8">
+                <input type="text" id="input_search" 
+                    placeholder="Enter a Country..." 
+                    class="bg-gray-800 text-white p-2 rounded-l-lg 
+                        focus:outline-none focus:ring-1 focus:ring-gray-600">
+                <button onclick="searchTheCountry()" id="button_search" 
+                    class="bg-gray-700 p-2 rounded-r-lg hover:bg-gray-500 
+                        focus:outline-none focus:ring-1 focus:ring-gray-600">
+                    Search
+                </button>
+            </div>
+            <div class="display-container bg-gray-800 p-4 rounded-lg shadow-lg">
+                <div class="country-container mb-8"></div>
+                <div class="region-main-container">
+                    <div class="region-title mb-4"></div>
+                    <div class="countries-region-container grid grid-cols-1 
+                        sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                </div>
+            </div>
         </div>
-        <div class="search-container"> 
-            <input
-               type="text" id="input_search"
-               placeholder="Enter a Country..."/> 
-            <button onclick="searchTheCountry()"
-               id="button_search">Search</button> 
-         </div>
-         <div class="display-container">
-            <div class="country-container">
-                This is where the details of the Country will Display.
-            </div>
-            <div class="region-main-container">
-                <div class="region-title"></div>
-                <div class="countries-region-container"></div>
-            </div>
-         </div>
         <script src="./script.js"></script>
     </body>
 </html>
