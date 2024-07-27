@@ -1,3 +1,25 @@
+function showSkeleton() {
+    document.querySelector('.country-container').innerHTML = `
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+    `;
+
+    document.querySelector('.countries-region-container').innerHTML = `
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-img"></div>
+    `;
+}
+
+function hideSkeleton() {
+    document.querySelector('.country-container').innerHTML = '';
+    document.querySelector('.countries-region-container').innerHTML = '';
+}
+
 function retrieveCountryDetails(countryName) {
     return fetch(`https://restcountries.com/v3.1/name/${countryName}`)
         .then(response => response.json())
@@ -26,14 +48,15 @@ function displayCountryDetails(country) {
             alt="${country.name.common} Flag"/>
         <p>Capital: ${country.capital}</p>
         <p>Region: ${region}</p>
-        <p>Area: ${country.area} km²</p>
-        <p>Languages: 
-            ${Object.values(country.languages).join(', ')}</p>
-        <p>Population: ${country.population}</p>
+        <p>Area: ${country.area.toLocaleString()} km²</p>
+        <p>Languages: ${Object.values(country.languages).join(', ')}</p>
+        <p>Population: ${country.population.toLocaleString()}</p>
     `;
 }
 
 function displayRegionCountries(regionCountries) {
+    regionCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
     const regionCountriesList = regionCountries.map(country => `
         <div>
             <img src="${country.flags.png}" 
@@ -42,15 +65,19 @@ function displayRegionCountries(regionCountries) {
         </div>
     `).join('');
     
-    document.querySelector('.countries-region-container').innerHTML = `
-        <p>${regionCountriesList}</p>`;
+    document.querySelector('.countries-region-container')
+        .innerHTML = regionCountriesList;
 }
 
 function searchTheCountry() {
     const countryName = document.querySelector('#input_search').value;
+    document.querySelector('.display-container').style.display = 'block';
+
+    showSkeleton();
 
     retrieveCountryDetails(countryName)
         .then(country => {
+            hideSkeleton(); 
             displayCountryDetails(country);
             return retrieveRegionCountries(country.region);
         })
@@ -61,6 +88,9 @@ function searchTheCountry() {
         })
         .catch(error => {
             console.error('Searching not successful:', error);
+            hideSkeleton();
+            document.querySelector('.display-container')
+                .innerHTML = 'No Data Found.';
         })
         .finally(() => {
             document.querySelector('#input_search').value = '';
