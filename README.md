@@ -13,3 +13,4 @@
 - Apply Skeleton Loading.
 - Add Validation for searching a country.
 - Apply Some Tailwind CSS styles.
+- Fix bug on not displaying the content when there is a 'No data Found' display.
