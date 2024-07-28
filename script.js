@@ -71,6 +71,7 @@ function displayRegionCountries(regionCountries) {
 
 function searchTheCountry() {
     const countryName = document.querySelector('#input_search').value;
+    document.querySelector('.error-message').style.display = 'none';
     document.querySelector('.display-container').style.display = 'block';
 
     showSkeleton();
@@ -90,6 +91,10 @@ function searchTheCountry() {
             console.error('Searching not successful:', error);
             hideSkeleton();
             document.querySelector('.display-container')
+                .style.display = 'none';
+            document.querySelector('.error-message')
+                .style.display = 'block';
+            document.querySelector('.error-message')
                 .innerHTML = 'No Data Found.';
         })
         .finally(() => {
